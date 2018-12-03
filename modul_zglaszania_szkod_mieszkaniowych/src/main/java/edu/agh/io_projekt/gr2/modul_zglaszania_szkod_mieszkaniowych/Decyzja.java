@@ -4,7 +4,7 @@ public class Decyzja {
     boolean czyPrzyjeta;
     String uzasadnienie; //czesc tu ewa
     int id;
-    int as;
+    int asa;
 
     public Decyzja(boolean czyPrzyjeta, String uzasadnienie, int id) {
         this.czyPrzyjeta = czyPrzyjeta;
