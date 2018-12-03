@@ -13,13 +13,13 @@ public class ModuleController {
 
     //
     //Jedynie dla sprawdzenia, czy dział i działa :D
-    //Postman -> [POST] localhost:8080/api/damage_report?clientId=456&damageDescription=zalanie mieszkania
+    //Postman -> [POST] localhost:8080/api/damage_report?clientNumber=456&damageDescription=zalanie mieszkania
     @RequestMapping(value = "/api/damage_report", method = RequestMethod.POST/*, produces = "application/json"*/)
     public String postDamageReport(
-    @RequestParam(value = "clientId") int clientId, 
+    @RequestParam(value = "clientNumber") int clientNumber, 
     @RequestParam(value = "damageDescription") String damageDescription) {
         
-        Klient klient = new Klient(0, clientId);
+        Klient klient = new Klient(clientNumber);
         Formularz formularz = new Formularz(0, damageDescription, klient);
 
         return formularz.getOpisSzkody();
