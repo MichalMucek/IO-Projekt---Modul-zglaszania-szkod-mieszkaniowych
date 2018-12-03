@@ -2,9 +2,8 @@ package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych;
 
 public class Decyzja {
     boolean czyPrzyjeta;
-    String uzasadnienie; //czesc tu ewa
+    String uzasadnienie; 
     int id;
-    int asa;
 
     public Decyzja(boolean czyPrzyjeta, String uzasadnienie, int id) {
         this.czyPrzyjeta = czyPrzyjeta;
