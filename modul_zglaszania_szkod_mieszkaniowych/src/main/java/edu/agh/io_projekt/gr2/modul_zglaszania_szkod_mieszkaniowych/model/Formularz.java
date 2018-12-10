@@ -1,4 +1,4 @@
-package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych;
+package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model;
 
 public class Formularz {
     int id;
