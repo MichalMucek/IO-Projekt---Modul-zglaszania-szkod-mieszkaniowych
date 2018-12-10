@@ -26,7 +26,7 @@ public class Klient {
 
     }
 
-    boolean zweryfikujNumer() {
+    public boolean zweryfikujNumer() {
         boolean numerIstnieje = false;
         
         try {
