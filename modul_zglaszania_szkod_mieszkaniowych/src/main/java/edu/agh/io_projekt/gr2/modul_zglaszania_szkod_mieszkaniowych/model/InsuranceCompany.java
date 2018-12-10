@@ -1,20 +1,20 @@
 package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model;
 
-public class Ubezpieczyciel {
-    String nazwaFirmy;
+public class InsuranceCompany {
+    String companyName;
     int id;
 
-    public Ubezpieczyciel(String nazwaFirmy, int id) {
-        this.nazwaFirmy = nazwaFirmy;
+    public InsuranceCompany(String companyName, int id) {
+        this.companyName = companyName;
         this.id = id;
     }
 
     public String getNazwaFirmy() {
-        return nazwaFirmy;
+        return companyName;
     }
 
-    public void setNazwaFirmy(String nazwaFirmy) {
-        this.nazwaFirmy = nazwaFirmy;
+    public void setNazwaFirmy(String companyName) {
+        this.companyName = companyName;
     }
 
     public int getId() {

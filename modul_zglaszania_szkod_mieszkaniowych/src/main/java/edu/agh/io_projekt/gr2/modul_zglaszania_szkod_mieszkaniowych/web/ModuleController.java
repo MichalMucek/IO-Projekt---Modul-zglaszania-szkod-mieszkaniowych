@@ -5,30 +5,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model.Formularz;
-import edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model.Klient;
+import edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model.DamageReport;
+import edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model.Client;
 
 @RestController
 public class ModuleController {
 
-    // Jedynie dla sprawdzenia, czy dział i działa :D
-    // Postman -> [POST]
-    // localhost:8080/api/damage_report?clientNumber=456&damageDescription=zalanie
-    // mieszkania
     @RequestMapping(value = "/api/damage_report", method = RequestMethod.POST)
     public String postDamageReport(
-            @RequestParam(value = "clientNumber") int clientNumber,
-            @RequestParam(value = "damageDescription") String damageDescription) {
+        @RequestParam(value = "clientNumber") int clientNumber,
+        @RequestParam(value = "damageDescription") String damageDescription) {
 
-        Klient klient = new Klient(clientNumber);
+        Client klient = new Client(clientNumber);
 
-        if (klient.zweryfikujNumer()) {
-            Formularz formularz = new Formularz(1456, damageDescription, klient);
+        if (klient.verifyNumber()) {
+            DamageReport formularz = new DamageReport(1456, damageDescription, klient);
             
             //TODO: Przekazanie formularza do DataStore
 
-            return formularz.getId() + " -> " + formularz.getOpisSzkody();
+            return formularz.getId() + " -> " + formularz.getDamageDescription();
         } else
             return "Błędny numer klienta";
+    }
+
+    @RequestMapping(value = "/api/decision", method = RequestMethod.GET)
+    public String getDecision(
+        @RequestParam(value = "clientNumber") int clientNumber,
+        @RequestParam(value = "damageReportId") int damageReportId) {
+
+        return "";
     }
 }

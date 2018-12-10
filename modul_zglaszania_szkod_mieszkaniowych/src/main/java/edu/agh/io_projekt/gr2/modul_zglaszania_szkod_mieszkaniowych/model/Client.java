@@ -3,35 +3,35 @@ package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Klient {
-    Integer nrKlienta;
+public class Client {
+    Integer number;
 
-    public void setNrKlienta(int nrKlienta) {
-        this.nrKlienta = nrKlienta;
+    public void setNumber(int number) {
+        this.number = number;
     }
 
-    public int getNrKlienta() {
-        return nrKlienta;
+    public int getNumber() {
+        return number;
     }
 
-    public Klient(int nrKlienta) {
-        this.nrKlienta = nrKlienta;
+    public Client(int number) {
+        this.number = number;
     }
 
-    void wyslijFormularz(Formularz formularz) {
-
-    }
-
-    void wypelnijFormularz(Formularz formularz) {
+    void sendDamageReport(DamageReport formularz) {
 
     }
 
-    public boolean zweryfikujNumer() {
-        boolean numerIstnieje = false;
+    void fillDamageReport(DamageReport formularz) {
+
+    }
+
+    public boolean verifyNumber() {
+        boolean numberExists = false;
 
         try {
             URL baseUrl = new URL("https://facebook.com/"); // TODO: Wpisać właściwy adres, gdy wszystko już będzie gotowe
-            URL url = new URL(baseUrl, nrKlienta.toString());
+            URL url = new URL(baseUrl, number.toString());
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
@@ -42,11 +42,11 @@ public class Klient {
 
             switch (status) {
             case 200: // OK
-                numerIstnieje = true;
+                numberExists = true;
                 break;
             case 300: // Client with given ID does not exist
                 // TODO: Exception() z kodem i wiadomością
-                numerIstnieje = false;
+                numberExists = false;
                 break;
             default:
                 // TODO: Obsługa kodów odpowiedzi 302, 303, 400, 500
@@ -56,6 +56,6 @@ public class Klient {
             e.printStackTrace();
         }
 
-        return numerIstnieje;
+        return numberExists;
     }
 }
