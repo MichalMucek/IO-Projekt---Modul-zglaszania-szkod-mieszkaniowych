@@ -28,9 +28,9 @@ public class Klient {
 
     public boolean zweryfikujNumer() {
         boolean numerIstnieje = false;
-        
+
         try {
-            URL baseUrl = new URL("https://nazwaubezpieczalni.pl/"); //TODO: Wpisać właściwy adres, gdy wszystko już będzie gotowe
+            URL baseUrl = new URL("https://nazwaubezpieczalni.pl/"); // TODO: Wpisać właściwy adres, gdy wszystko już będzie gotowe
             URL url = new URL(baseUrl, nrKlienta.toString());
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -39,18 +39,18 @@ public class Klient {
 
             Integer status = httpURLConnection.getResponseCode();
             status = 200;
-            
+
             switch (status) {
-                case 200: //OK
-                    numerIstnieje = true;
-                    break;
-                case 300: //Client with given ID does not exist
-                    //TODO: Exception() z kodem i wiadomością
-                    numerIstnieje = false;
-                    break;
-                default:
-                    //TODO: Obsługa kodów odpowiedzi 302, 303, 400, 500
-                    break;
+            case 200: // OK
+                numerIstnieje = true;
+                break;
+            case 300: // Client with given ID does not exist
+                // TODO: Exception() z kodem i wiadomością
+                numerIstnieje = false;
+                break;
+            default:
+                // TODO: Obsługa kodów odpowiedzi 302, 303, 400, 500
+                break;
             }
         } catch (Exception e) {
             e.printStackTrace();
