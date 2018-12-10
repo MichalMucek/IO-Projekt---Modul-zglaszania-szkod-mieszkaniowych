@@ -2,19 +2,20 @@ package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class DamageReport {
-    int id;
+    String id;
     String damageDescription;
     Client client;
 
     public static List<DamageReport> damageReportDataStore = new ArrayList<>();
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -34,9 +35,9 @@ public class DamageReport {
         this.client = client;
     }
 
-    public DamageReport(int id, String damageDescription, Client client) {
+    public DamageReport(String damageDescription, Client client) {
 
-        this.id = id;
+        this.id = UUID.randomUUID().toString(); // Losowe, unikalne ID
         this.damageDescription = damageDescription;
         this.client = client;
     }

@@ -19,11 +19,10 @@ public class ModuleController {
         Client klient = new Client(clientNumber);
 
         if (klient.verifyNumber()) {
-            DamageReport formularz = new DamageReport(1456, damageDescription, klient);
-            
-            //TODO: Przekazanie formularza do DataStore
+            DamageReport newDamageReport = new DamageReport(damageDescription, klient);
+            DamageReport.damageReportDataStore.add(newDamageReport);
 
-            return formularz.getId() + " -> " + formularz.getDamageDescription();
+            return newDamageReport.getId() + " -> " + newDamageReport.getDamageDescription();
         } else
             return "Błędny numer klienta";
     }
