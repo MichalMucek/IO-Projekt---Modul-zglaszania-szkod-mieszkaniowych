@@ -30,7 +30,7 @@ public class Klient {
         boolean numerIstnieje = false;
 
         try {
-            URL baseUrl = new URL("https://nazwaubezpieczalni.pl/"); // TODO: Wpisać właściwy adres, gdy wszystko już będzie gotowe
+            URL baseUrl = new URL("https://facebook.com/"); // TODO: Wpisać właściwy adres, gdy wszystko już będzie gotowe
             URL url = new URL(baseUrl, nrKlienta.toString());
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

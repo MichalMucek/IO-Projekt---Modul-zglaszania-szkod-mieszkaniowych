@@ -24,6 +24,9 @@ public class ModuleController {
 
         if (klient.zweryfikujNumer()) {
             Formularz formularz = new Formularz(1456, damageDescription, klient);
+            
+            //TODO: Przekazanie formularza do DataStore
+
             return formularz.getId() + " -> " + formularz.getOpisSzkody();
         } else
             return "Błędny numer klienta";
