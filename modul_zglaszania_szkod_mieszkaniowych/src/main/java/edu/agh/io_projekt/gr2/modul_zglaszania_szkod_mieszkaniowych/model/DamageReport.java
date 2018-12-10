@@ -1,9 +1,14 @@
 package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DamageReport {
     int id;
     String damageDescription;
     Client client;
+
+    public static List<DamageReport> damageReportDataStore = new ArrayList<>();
 
     public int getId() {
         return id;
