@@ -34,4 +34,11 @@ public class ModuleController {
 
         return "";
     }
+
+    @RequestMapping(value = "/api/decision", method = RequestMethod.POST)
+    public String postDecision() // TODO: Dodać parametry
+        {
+
+        return "";
+    }
 }
