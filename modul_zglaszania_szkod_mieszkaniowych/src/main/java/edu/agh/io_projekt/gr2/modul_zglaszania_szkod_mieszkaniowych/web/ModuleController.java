@@ -20,7 +20,6 @@ public class ModuleController {
 
         if (klient.verifyNumber()) {
             DamageReport newDamageReport = new DamageReport(damageDescription, klient);
-            DamageReport.damageReportDataStore.add(newDamageReport);
 
             return newDamageReport.getId() + " -> " + newDamageReport.getDamageDescription();
         } else

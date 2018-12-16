@@ -9,8 +9,6 @@ public class DamageReport {
     String damageDescription;
     Client client;
 
-    public static List<DamageReport> damageReportDataStore = new ArrayList<>();
-
     public String getId() {
         return id;
     }
@@ -37,7 +35,7 @@ public class DamageReport {
 
     public DamageReport(String damageDescription, Client client) {
 
-        this.id = UUID.randomUUID().toString(); // Losowe, unikalne ID
+        //TODO: Przypisanie id po wysłaniu zgłoszenia na serwer
         this.damageDescription = damageDescription;
         this.client = client;
     }
