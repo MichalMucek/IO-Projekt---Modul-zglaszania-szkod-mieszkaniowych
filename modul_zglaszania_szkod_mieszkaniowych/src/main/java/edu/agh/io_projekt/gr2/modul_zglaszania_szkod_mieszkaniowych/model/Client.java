@@ -30,7 +30,7 @@ public class Client {
         boolean numberExists = false;
 
         try {
-            URL baseUrl = new URL("https://facebook.com/"); // TODO: Wpisać właściwy adres, gdy wszystko już będzie gotowe
+            URL baseUrl = new URL("https://localhost:4040/");
             URL url = new URL(baseUrl, number.toString());
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -38,7 +38,6 @@ public class Client {
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
 
             Integer status = httpURLConnection.getResponseCode();
-            status = 200;
 
             switch (status) {
             case 200: // OK

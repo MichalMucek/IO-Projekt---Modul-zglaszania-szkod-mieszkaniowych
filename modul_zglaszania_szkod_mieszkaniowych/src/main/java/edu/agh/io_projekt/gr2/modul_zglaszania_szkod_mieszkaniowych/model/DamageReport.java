@@ -1,9 +1,5 @@
 package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 public class DamageReport {
     String id;
     String damageDescription;
