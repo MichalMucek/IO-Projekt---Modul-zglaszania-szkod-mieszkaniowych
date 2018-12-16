@@ -30,7 +30,7 @@ public class Client {
         boolean numberExists = false;
 
         try {
-            URL baseUrl = new URL("https://localhost:4040/");
+            URL baseUrl = new URL("http://localhost:4040/client/");
             URL url = new URL(baseUrl, number.toString());
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
