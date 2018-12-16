@@ -4,17 +4,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Client {
-    Integer number;
+    String number;
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public Client(int number) {
+    public Client(String number) {
         this.number = number;
     }
 
@@ -31,7 +31,7 @@ public class Client {
 
         try {
             URL baseUrl = new URL("http://localhost:4040/client/");
-            URL url = new URL(baseUrl, number.toString());
+            URL url = new URL(baseUrl, number);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");

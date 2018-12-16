@@ -13,7 +13,7 @@ public class ModuleController {
 
     @RequestMapping(value = "/api/damage_report", method = RequestMethod.POST)
     public String postDamageReport(
-        @RequestParam(value = "clientNumber") int clientNumber,
+        @RequestParam(value = "clientNumber") String clientNumber,
         @RequestParam(value = "damageDescription") String damageDescription) {
 
         Client klient = new Client(clientNumber);
