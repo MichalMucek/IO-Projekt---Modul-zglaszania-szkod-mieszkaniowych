@@ -39,6 +39,8 @@ public class Client {
 
             Integer status = httpURLConnection.getResponseCode();
 
+            System.out.println("Client.verifyNumber(): Client.number = " + number + " | status = " + status + " | url = " + url.toString());
+
             switch (status) {
             case 200: // OK
                 numberExists = true;
