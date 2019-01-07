@@ -16,10 +16,8 @@ public class ModuleController {
         @RequestParam(value = "clientNumber") String clientNumber,
         @RequestParam(value = "damageDescription") String damageDescription) {
 
-        Client klient = new Client(clientNumber);
-
-        if (klient.verifyNumber()) {
-            DamageReport newDamageReport = new DamageReport(damageDescription, klient);
+        if (Client.verifyNumber(clientNumber)) {
+            DamageReport newDamageReport = new DamageReport(damageDescription, new Client(clientNumber));
 
             return newDamageReport.getId() + " -> " + newDamageReport.getDamageDescription();
         } else
@@ -28,7 +26,7 @@ public class ModuleController {
 
     @RequestMapping(value = "/api/decision", method = RequestMethod.GET)
     public String getDecision(
-        @RequestParam(value = "clientNumber") int clientNumber,
+        @RequestParam(value = "clientNumber") int clientNumber, //TODO: Zamienić na String
         @RequestParam(value = "damageReportId") int damageReportId) {
 
         return "";
@@ -39,5 +37,16 @@ public class ModuleController {
         {
 
         return "";
+    }
+
+    @RequestMapping(value = "/api/insurances", method = RequestMethod.GET)
+    public String getClientInsurances(
+        @RequestParam(value = "clientNumber") String clientNumber) {
+
+        //Pozyskanie informacji o kliencie jeszcze nie jest zaimplementowane w ClientData
+        //if (Client.verifyNumber(clientNumber))
+            return Client.getClientInsurances(clientNumber);
+
+        //return "";
     }
 }

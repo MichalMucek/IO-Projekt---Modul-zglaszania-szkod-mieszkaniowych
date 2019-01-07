@@ -1,5 +1,7 @@
 package edu.agh.io_projekt.gr2.modul_zglaszania_szkod_mieszkaniowych.model;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -26,12 +28,11 @@ public class Client {
 
     }
 
-    public boolean verifyNumber() {
+    public static boolean verifyNumber(String number) {
         boolean numberExists = false;
 
         try {
-            URL baseUrl = new URL("http://localhost:4040/client/");
-            URL url = new URL(baseUrl, number);
+            URL url = new URL("http://localhost:4040/client/" + number);
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
@@ -39,7 +40,7 @@ public class Client {
 
             Integer status = httpURLConnection.getResponseCode();
 
-            System.out.println("Client.verifyNumber(): Client.number = " + number + " | status = " + status + " | url = " + url.toString());
+            System.out.println("Client.verifyNumber(String number): number = " + number + " | status = " + status + " | url = " + url.toString());
 
             switch (status) {
             case 200: // OK
@@ -58,5 +59,39 @@ public class Client {
         }
 
         return numberExists;
+    }
+
+    public static String getClientInsurances(String number) {
+        try {
+            URL url = new URL("http://localhost:4040/client/" + number + "/insurances/HOME");
+
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setRequestMethod("GET");
+            httpURLConnection.setRequestProperty("Content-Type", "application/json");
+
+            System.out.println("Próba połączenia z " + url.toString());
+
+            Integer status = httpURLConnection.getResponseCode();
+
+            System.out.println("Status połączenia z " + url.toString() + " -> " + status);
+
+            if (status == 200) {
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                String inputLine;
+
+                while((inputLine = bufferedReader.readLine()) != null)
+                    response.append(inputLine);
+
+                bufferedReader.close();
+                httpURLConnection.disconnect();
+
+                return response.toString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return "";
     }
 }
